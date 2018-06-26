@@ -30,3 +30,7 @@ out
 hs_err_pid*
 
 .DS_Store
+
+.classpath
+.settings
+.project
