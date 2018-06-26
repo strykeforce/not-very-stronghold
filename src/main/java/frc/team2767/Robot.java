@@ -8,5 +8,4 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     System.out.println("Hello!");
   }
-
 }

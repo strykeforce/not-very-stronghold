@@ -2,6 +2,7 @@ plugins {
     id "java"
     id "idea"
     id "jaci.openrio.gradle.GradleRIO" version "2018.01.22"
+    id 'com.diffplug.gradle.spotless' version '3.13.0'
 }
 def TEAM = 2767
 def ROBOT_CLASS = "frc.team2767.Robot"
@@ -35,6 +36,13 @@ dependencies {
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     manifest jaci.openrio.gradle.GradleRIOPlugin.javaManifest(ROBOT_CLASS)
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+        target '**/*.java'
+    }
 }
 
 task wrapper(type: Wrapper) {
