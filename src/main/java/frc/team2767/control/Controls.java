@@ -5,11 +5,14 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team2767.commands.TestTankRun;
 import frc.team2767.commands.TestTankStop;
+import frc.team2767.commands.coconutCommands.*;
 
 public class Controls {
 
   private Joystick driveJoystick;
   private JoystickButton rightSwitch;
+  private JoystickButton leftForward;
+  private JoystickButton leftBack;
 
   private static final int USB = 1;
 
@@ -23,9 +26,16 @@ public class Controls {
 
     driveJoystick = new Joystick(USB);
     rightSwitch = new JoystickButton(driveJoystick, 2);
+    leftForward = new JoystickButton(driveJoystick, 4);
+    leftBack = new JoystickButton(driveJoystick, 5);
 
     rightSwitch.whenPressed(new TestTankRun());
     rightSwitch.whenReleased(new TestTankStop());
+
+    leftForward.whenPressed(new CoconutSetForward());
+    leftForward.whenReleased(new CoconutStop());
+    leftBack.whenPressed(new CoconutSetBack());
+    leftBack.whenReleased(new CoconutStop());
   }
 
   public double getRightAxis() {
