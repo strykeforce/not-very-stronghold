@@ -26,8 +26,8 @@ public class DriveTankArcade1 extends Command {
 
   @Override
   protected void execute() {
-    steer = controls.scrubAxisOutput(controls.getLeftAxis());
-    throttle = controls.scrubAxisOutput(controls.getRightAxis());
+    steer = controls.scrubAxisOutput(controls.getRightAxis());
+    throttle = controls.scrubAxisOutput(controls.getLeftAxis());
     System.out.println("PRE: " + steer + ", " + throttle);
 
     leftPercentDrive = controls.scrubAxisOutput(throttle - (proportion * steer));

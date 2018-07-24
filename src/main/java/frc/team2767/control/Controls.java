@@ -37,7 +37,7 @@ public class Controls {
   }
 
   public double getRightAxis() {
-    return -driveJoystick.getRawAxis(Axis.Y_AXIS.index);
+    return -driveJoystick.getRawAxis(Axis.X_AXIS.index);
   }
 
   public double getLeftAxis() {
@@ -58,8 +58,7 @@ public class Controls {
   }
 
   public enum Axis {
-    Y_AXIS(1),
-    Z_AXIS(5),
+    Z_AXIS(2),
     X_AXIS(0);
 
     private final int index;
