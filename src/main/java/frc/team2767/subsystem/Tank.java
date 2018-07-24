@@ -3,7 +3,7 @@ package frc.team2767.subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.team2767.commands.DriveTankSide;
+import frc.team2767.commands.DriveTankArcade1;
 
 public class Tank extends Subsystem {
 
@@ -18,7 +18,7 @@ public class Tank extends Subsystem {
 
   @Override
   protected void initDefaultCommand() {
-    setDefaultCommand(new DriveTankSide());
+    setDefaultCommand(new DriveTankArcade1());
   }
 
   public Tank() {

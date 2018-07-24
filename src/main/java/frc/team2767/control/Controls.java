@@ -14,6 +14,9 @@ public class Controls {
 
   private static final int USB = 1;
 
+  private static double MAXIMUM = .85;
+  private static double DEAD = .05;
+
   public Controls() {
 
     System.out.println("Controls are constructed");
@@ -41,9 +44,23 @@ public class Controls {
     return -driveJoystick.getRawAxis(Axis.Z_AXIS.index);
   }
 
+  public double scrubAxisOutput(double axis) {
+    if (Math.abs(axis) < DEAD) {
+      return 0;
+    } else {
+      if (axis > MAXIMUM) {
+        axis = MAXIMUM;
+      } else if (axis < -MAXIMUM) {
+        axis = -MAXIMUM;
+      }
+    }
+    return axis;
+  }
+
   public enum Axis {
     Y_AXIS(1),
-    Z_AXIS(2);
+    Z_AXIS(5),
+    X_AXIS(0);
 
     private final int index;
 
