@@ -60,8 +60,4 @@ public class DriveTankSide extends Command {
   protected void end() {
     tank.driveSidePercent(0, 0);
   }
-
-  public DriveTankSide() {
-    requires(Tank);
-  }
 }
