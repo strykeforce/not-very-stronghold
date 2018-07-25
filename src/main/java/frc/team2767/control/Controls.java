@@ -3,8 +3,6 @@ package frc.team2767.control;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team2767.commands.TestTankRun;
-import frc.team2767.commands.TestTankStop;
 import frc.team2767.commands.coconutCommands.*;
 
 public class Controls {
@@ -28,9 +26,6 @@ public class Controls {
     rightSwitch = new JoystickButton(driveJoystick, 2);
     leftForward = new JoystickButton(driveJoystick, 4);
     leftBack = new JoystickButton(driveJoystick, 5);
-
-    rightSwitch.whenPressed(new TestTankRun());
-    rightSwitch.whenReleased(new TestTankStop());
 
     leftForward.whenPressed(new CoconutSetForward());
     leftForward.whenReleased(new CoconutStop());
