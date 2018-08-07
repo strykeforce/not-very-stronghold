@@ -1,0 +1,17 @@
+###############################################################################
+#
+# (not-very) Stronghold Talon Configurations
+#
+###############################################################################
+
+# See example Talons at:
+# https://github.com/strykeforce/powerup/blob/master/src/main/resources/META-INF/powerup/thirdcoast.toml
+
+ [[TALON]]
+  name = "coconut"
+  talonIds = [40]
+  [TALON.selectedFeedbackSensor]
+    feedbackDevice = "QuadEncoder"
+  [TALON.output]
+    neutralMode = "Brake"
+

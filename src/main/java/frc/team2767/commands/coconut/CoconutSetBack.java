@@ -1,24 +1,25 @@
-package frc.team2767.commands.coconutCommands;
+package frc.team2767.commands.coconut;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.team2767.Robot;
 import frc.team2767.subsystem.Coconut;
 import frc.team2767.subsystem.Coconut.CoconutPosition;
 
 public class CoconutSetBack extends Command {
-  private final Coconut Coconut = new Coconut();
+  private final Coconut COCONUT = Robot.COMPONENTS.coconutSubsystem();
 
   @Override
   protected void initialize() {
-    Coconut.setPosition(CoconutPosition.BACK);
-    System.out.println("Coconut set forward");
+    COCONUT.setPosition(CoconutPosition.BACK);
+    System.out.println("COCONUT set forward");
   }
 
   @Override
   protected boolean isFinished() {
-    return Coconut.positionReached(CoconutPosition.BACK);
+    return COCONUT.positionReached(CoconutPosition.BACK);
   }
 
   public CoconutSetBack() {
-    requires(Coconut);
+    requires(COCONUT);
   }
 }

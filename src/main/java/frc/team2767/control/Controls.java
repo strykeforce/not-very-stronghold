@@ -3,7 +3,7 @@ package frc.team2767.control;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team2767.commands.coconutCommands.*;
+import frc.team2767.commands.coconut.*;
 
 public class Controls {
 

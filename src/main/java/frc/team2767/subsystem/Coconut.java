@@ -3,27 +3,29 @@ package frc.team2767.subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.team2767.Robot;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import org.strykeforce.thirdcoast.talon.Talons;
+import org.strykeforce.thirdcoast.telemetry.item.TalonItem;
 
+@Singleton
 public class Coconut extends Subsystem {
-  private final int COCONUT = 40;
-
-  public enum CoconutPosition {
-    FORWARD,
-    BACK;
-  }
-
+  private final int COCONUT_ID = 40;
   private final int feedPostition = 75000;
   private final int backPostition = 0;
   private final int closeEnough = 3000;
-
   private final TalonSRX coconut;
 
-  public Coconut() {
-    coconut = new TalonSRX(COCONUT);
+  @Inject
+  public Coconut(Talons talons) {
+    coconut = talons.getTalon(COCONUT_ID);
 
     if (coconut == null) {
-      System.out.println("Coconut not found");
+      System.out.println("Coconut Talon not found");
     }
+
+    Robot.COMPONENTS.telemetryService().register(new TalonItem(coconut, "Coconut Talon (40)"));
   }
 
   @Override
@@ -58,5 +60,10 @@ public class Coconut extends Subsystem {
     } else {
       return Math.abs(coconut.getSelectedSensorPosition(0) - backPostition) < closeEnough;
     }
+  }
+
+  public enum CoconutPosition {
+    FORWARD,
+    BACK;
   }
 }
