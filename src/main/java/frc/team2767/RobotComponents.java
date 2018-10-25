@@ -3,6 +3,8 @@ package frc.team2767;
 import dagger.BindsInstance;
 import dagger.Component;
 import frc.team2767.subsystem.Coconut;
+import frc.team2767.subsystem.Shooter;
+import frc.team2767.subsystem.ShooterShoulder;
 import java.net.URL;
 import javax.inject.Singleton;
 import org.strykeforce.thirdcoast.swerve.GyroModule;
@@ -15,6 +17,8 @@ import org.strykeforce.thirdcoast.telemetry.TelemetryService;
 public interface RobotComponents {
 
   Coconut coconutSubsystem();
+  Shooter shooterSubsystem();
+  ShooterShoulder shooterShoulderSubsystem();
 
   TelemetryService telemetryService();
 

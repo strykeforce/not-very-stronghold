@@ -4,6 +4,11 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team2767.commands.coconut.*;
+import frc.team2767.commands.shooter.ShooterOff;
+import frc.team2767.commands.shooter.ShooterOn;
+import frc.team2767.commands.shooterShoulder.ShoulderDown;
+import frc.team2767.commands.shooterShoulder.ShoulderStop;
+import frc.team2767.commands.shooterShoulder.ShoulderUp;
 
 public class Controls {
 
@@ -11,6 +16,11 @@ public class Controls {
   private JoystickButton rightSwitch;
   private JoystickButton leftForward;
   private JoystickButton leftBack;
+
+  private JoystickButton upButton;
+  private JoystickButton downButton;
+
+  private JoystickButton rightForward;
 
   private static final int USB = 1;
 
@@ -30,10 +40,23 @@ public class Controls {
     leftForward = new JoystickButton(driveJoystick, 4);
     leftBack = new JoystickButton(driveJoystick, 5);
 
+    upButton = new JoystickButton(driveJoystick, 16);
+    downButton = new JoystickButton(driveJoystick, 17);
+
+    rightForward = new JoystickButton(driveJoystick, 4);
+
     leftForward.whenPressed(new CoconutSetForward());
     leftForward.whenReleased(new CoconutStop());
     leftBack.whenPressed(new CoconutSetBack());
     leftBack.whenReleased(new CoconutStop());
+
+    upButton.whenPressed(new ShoulderUp());
+    upButton.whenReleased(new ShoulderStop());
+    downButton.whenPressed(new ShoulderDown());
+    downButton.whenReleased(new ShoulderStop());
+
+    rightForward.whenPressed(new ShooterOn());
+    rightForward.whenReleased(new ShooterOff());
   }
 
   public double getRightAxis() {
