@@ -17,7 +17,9 @@ import org.strykeforce.thirdcoast.telemetry.TelemetryService;
 public interface RobotComponents {
 
   Coconut coconutSubsystem();
+
   Shooter shooterSubsystem();
+
   ShooterShoulder shooterShoulderSubsystem();
 
   TelemetryService telemetryService();

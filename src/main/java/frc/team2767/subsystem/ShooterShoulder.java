@@ -3,15 +3,13 @@ package frc.team2767.subsystem;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.team2767.Robot;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.strykeforce.thirdcoast.talon.Talons;
-import org.strykeforce.thirdcoast.telemetry.item.TalonItem;
 
 @Singleton
 public class ShooterShoulder extends Subsystem {
-  private final int SHOULDER_ID = 13;
+  private final int SHOULDER_ID = 30;
   private final TalonSRX shoulder;
 
   @Inject
@@ -22,9 +20,8 @@ public class ShooterShoulder extends Subsystem {
       System.out.println("shooter shoulder Talon not found");
     }
 
-    Robot.COMPONENTS
-        .telemetryService()
-        .register(new TalonItem(shoulder, "shooter Shoulder Talon (13)"));
+    // Robot.COMPONENTS.telemetryService().register(new TalonItem(shoulder, "shooter Shoulder Talon
+    // (13)"));
   }
 
   @Override
