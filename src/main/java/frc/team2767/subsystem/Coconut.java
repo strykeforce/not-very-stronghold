@@ -13,7 +13,7 @@ import org.strykeforce.thirdcoast.telemetry.item.TalonItem;
 public class Coconut extends Subsystem {
   private final int COCONUT_ID = 40;
   private final int feedPostition = 75000;
-  private final int backPostition = 0;
+  private final int backPostition = 10000;
   private final int closeEnough = 3000;
   private final TalonSRX coconut;
 

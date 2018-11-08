@@ -28,12 +28,12 @@ public class DriveTankArcade1 extends Command {
   protected void execute() {
     steer = controls.scrubAxisOutput(controls.getRightAxis());
     throttle = controls.scrubAxisOutput(controls.getLeftAxis());
-    System.out.println("PRE: " + steer + ", " + throttle);
+    // System.out.println("PRE: " + steer + ", " + throttle);
 
     leftPercentDrive = controls.scrubAxisOutput(throttle - (proportion * steer));
     rightPercentDrive = controls.scrubAxisOutput(throttle + (proportion * steer));
 
-    System.out.println("POST: " + rightPercentDrive + ", " + leftPercentDrive);
+    // System.out.println("POST: " + rightPercentDrive + ", " + leftPercentDrive);
 
     tank.driveSidePercent(leftPercentDrive, rightPercentDrive);
   }
