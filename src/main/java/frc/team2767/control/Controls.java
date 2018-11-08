@@ -14,7 +14,7 @@ public class Controls {
 
   private Joystick driveJoystick;
   private JoystickButton rightSwitch;
-  private JoystickButton leftForward;
+  public JoystickButton leftForward;
   private JoystickButton leftBack;
 
   private JoystickButton upButton;
@@ -43,7 +43,7 @@ public class Controls {
     upButton = new JoystickButton(driveJoystick, 16);
     downButton = new JoystickButton(driveJoystick, 17);
 
-    rightForward = new JoystickButton(driveJoystick, 4);
+    rightForward = new JoystickButton(driveJoystick, 2);
 
     leftForward.whenPressed(new CoconutSetForward());
     leftForward.whenReleased(new CoconutStop());

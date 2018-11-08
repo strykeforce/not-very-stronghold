@@ -20,8 +20,12 @@ public class Shooter extends Subsystem {
     left = talons.getTalon(LEFT_ID);
     right = talons.getTalon(RIGHT_ID);
 
-    if (left == null || right == null) {
-      System.out.println("shooter Talon not found");
+    if (left == null) {
+      System.out.println("left shooter Talon not found");
+    }
+
+    if (right == null) {
+      System.out.println("right shooter Talon not found");
     }
 
     // Robot.COMPONENTS.telemetryService().register(new TalonItem(left, "shooter Left Talon (11)"));
