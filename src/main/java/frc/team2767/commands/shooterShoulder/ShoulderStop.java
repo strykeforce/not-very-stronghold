@@ -5,7 +5,7 @@ import frc.team2767.Robot;
 import frc.team2767.subsystem.ShooterShoulder;
 
 public class ShoulderStop extends InstantCommand {
-  private final ShooterShoulder SHOOTER_SHOULDER = Robot.COMPONENTS.shooterShoulderSubsystem();
+  private final ShooterShoulder SHOOTER_SHOULDER = Robot.SHOOTER_SHOULDER;
 
   @Override
   protected void initialize() {
