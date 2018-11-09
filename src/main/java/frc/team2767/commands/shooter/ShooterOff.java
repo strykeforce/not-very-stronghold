@@ -5,7 +5,7 @@ import frc.team2767.Robot;
 import frc.team2767.subsystem.Shooter;
 
 public class ShooterOff extends InstantCommand {
-  private final Shooter SHOOTER = Robot.COMPONENTS.shooterSubsystem();
+  private final Shooter SHOOTER = Robot.SHOOTER;
 
   @Override
   protected void initialize() {

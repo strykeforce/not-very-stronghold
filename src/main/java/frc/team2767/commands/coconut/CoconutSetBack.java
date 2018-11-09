@@ -6,7 +6,7 @@ import frc.team2767.subsystem.Coconut;
 import frc.team2767.subsystem.Coconut.CoconutPosition;
 
 public class CoconutSetBack extends Command {
-  private final Coconut COCONUT = Robot.COMPONENTS.coconutSubsystem();
+  private final Coconut COCONUT = Robot.COCONUT;
 
   @Override
   protected void initialize() {
