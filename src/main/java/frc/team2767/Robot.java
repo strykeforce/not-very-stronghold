@@ -7,62 +7,69 @@ import frc.team2767.subsystem.Coconut;
 import frc.team2767.subsystem.Shooter;
 import frc.team2767.subsystem.ShooterShoulder;
 import frc.team2767.subsystem.Tank;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import org.jetbrains.annotations.NotNull;
 import org.strykeforce.thirdcoast.telemetry.TelemetryController;
 import org.strykeforce.thirdcoast.telemetry.TelemetryService;
 import org.strykeforce.thirdcoast.telemetry.grapher.ClientHandler;
 
-import java.net.DatagramSocket;
-import java.net.SocketException;
-
 public class Robot extends TimedRobot {
-    public static final Tank TANK = new Tank();
-    public static final Coconut COCONUT = new Coconut();
-    public static final Shooter SHOOTER = new Shooter();
-    public static final ShooterShoulder SHOOTER_SHOULDER = new ShooterShoulder();
+  public static Tank TANK;
+  public static Coconut COCONUT;
+  public static Shooter SHOOTER;
+  public static ShooterShoulder SHOOTER_SHOULDER;
 
-    public static final Controls CONTROLS = new Controls();
-    private static final int CLIENT_PORT = 5801; // grapher client listens on this
-    private static final int SERVER_PORT = 5800; // roborio listens on this
-    public static final TelemetryService TELEMETRY = getTelemetryService();
-    private Scheduler scheduler;
+  public static Controls CONTROLS;
+  private static final int CLIENT_PORT = 5801; // grapher client listens on this
+  private static final int SERVER_PORT = 5800; // roborio listens on this
+  public static TelemetryService TELEMETRY;
+  private Scheduler scheduler;
 
-    @NotNull
-    private static TelemetryService getTelemetryService() {
-        // Create a TelemetryService using manual dependency injection.
-        //
-        // TelemetryService is instantiated with a TelemetryController factory functional interface:
-        //   inventory -> new TelemetryController
-        //
-        // The inventory is managed internally by the TelemetryService and updated when you register
-        // talons, etc.
-        //
-        // The injected TelemetryController class listens for HTTP requests from telemetry clients.
-        // The injected ClientHandler class provides the UDP data stream to the telemetry client. One
-        // client at at time is supported for streaming.
-        // The injected DatagramSocket is the source socket that datagrams are sent through.
+  @NotNull
+  private static TelemetryService getTelemetryService() {
+    // Create a TelemetryService using manual dependency injection.
+    //
+    // TelemetryService is instantiated with a TelemetryController factory functional interface:
+    //   inventory -> new TelemetryController
+    //
+    // The inventory is managed internally by the TelemetryService and updated when you register
+    // talons, etc.
+    //
+    // The injected TelemetryController class listens for HTTP requests from telemetry clients.
+    // The injected ClientHandler class provides the UDP data stream to the telemetry client. One
+    // client at at time is supported for streaming.
+    // The injected DatagramSocket is the source socket that datagrams are sent through.
 
-        return new TelemetryService(
-                inventory -> {
-                    DatagramSocket datagramSocket; // grr checked exceptions...
-                    try {
-                        datagramSocket = new DatagramSocket();
-                    } catch (SocketException se) {
-                        throw new RuntimeException(se);
-                    }
-                    return new TelemetryController(
-                            inventory, new ClientHandler(CLIENT_PORT, datagramSocket), SERVER_PORT);
-                });
-    }
+    return new TelemetryService(
+        inventory -> {
+          DatagramSocket datagramSocket; // grr checked exceptions...
+          try {
+            datagramSocket = new DatagramSocket();
+          } catch (SocketException se) {
+            throw new RuntimeException(se);
+          }
+          return new TelemetryController(
+              inventory, new ClientHandler(CLIENT_PORT, datagramSocket), SERVER_PORT);
+        });
+  }
 
-    @Override
-    public void robotInit() {
-        System.out.println("Hello!");
-        scheduler = Scheduler.getInstance();
-    }
+  @Override
+  public void robotInit() {
+    TELEMETRY = getTelemetryService();
+    TANK = new Tank();
+    COCONUT = new Coconut();
+    SHOOTER = new Shooter();
+    SHOOTER_SHOULDER = new ShooterShoulder();
 
-    @Override
-    public void teleopPeriodic() {
-        scheduler.run();
-    }
+    CONTROLS = new Controls();
+
+    System.out.println("Hello!");
+    scheduler = Scheduler.getInstance();
+  }
+
+  @Override
+  public void teleopPeriodic() {
+    scheduler.run();
+  }
 }

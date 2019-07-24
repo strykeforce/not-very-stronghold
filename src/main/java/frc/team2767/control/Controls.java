@@ -22,7 +22,7 @@ public class Controls {
 
   private JoystickButton rightForward;
 
-  private static final int USB = 1;
+  private static final int USB = 0;
 
   private static double MAXIMUM = .85;
   private static double DEAD = .05;
