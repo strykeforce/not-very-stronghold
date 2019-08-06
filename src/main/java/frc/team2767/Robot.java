@@ -3,10 +3,8 @@ package frc.team2767;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.team2767.control.Controls;
-import frc.team2767.subsystem.Coconut;
-import frc.team2767.subsystem.Shooter;
-import frc.team2767.subsystem.ShooterShoulder;
-import frc.team2767.subsystem.Tank;
+import frc.team2767.subsystem.*;
+
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +17,7 @@ public class Robot extends TimedRobot {
   public static Coconut COCONUT;
   public static Shooter SHOOTER;
   public static ShooterShoulder SHOOTER_SHOULDER;
+  public static VisionThread VISION_THREAD;
 
   public static Controls CONTROLS;
   private static final int CLIENT_PORT = 5801; // grapher client listens on this
@@ -61,6 +60,7 @@ public class Robot extends TimedRobot {
     COCONUT = new Coconut();
     SHOOTER = new Shooter();
     SHOOTER_SHOULDER = new ShooterShoulder();
+    VISION_THREAD = new VisionThread();
 
     CONTROLS = new Controls();
 
