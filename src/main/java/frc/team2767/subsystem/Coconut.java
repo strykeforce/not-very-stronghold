@@ -1,8 +1,6 @@
 package frc.team2767.subsystem;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,6 +18,8 @@ public class Coconut extends Subsystem {
     config.primaryPID.selectedFeedbackSensor = FeedbackDevice.QuadEncoder;
     coconut.configAllSettings(config);
     coconut.setNeutralMode(NeutralMode.Brake);
+    coconut.configReverseLimitSwitchSource(
+        LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed);
     Robot.TELEMETRY.register(coconut);
   }
 

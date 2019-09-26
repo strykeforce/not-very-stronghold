@@ -3,6 +3,7 @@ package frc.team2767.control;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.team2767.commands.ShootCommand;
 import frc.team2767.commands.coconut.*;
 import frc.team2767.commands.shooter.ShooterOff;
 import frc.team2767.commands.shooter.ShooterOn;
@@ -21,6 +22,8 @@ public class Controls {
   private JoystickButton downButton;
 
   private JoystickButton rightForward;
+
+  private JoystickButton shoot;
 
   private static final int USB = 0;
 
@@ -43,7 +46,7 @@ public class Controls {
     upButton = new JoystickButton(driveJoystick, 16);
     downButton = new JoystickButton(driveJoystick, 17);
 
-    rightForward = new JoystickButton(driveJoystick, 2);
+    shoot = new JoystickButton(driveJoystick, 14);
 
     leftForward.whenPressed(new CoconutSetForward());
     leftForward.whenReleased(new CoconutStop());
@@ -55,8 +58,10 @@ public class Controls {
     downButton.whenPressed(new ShoulderDown());
     downButton.whenReleased(new ShoulderStop());
 
-    rightForward.whenPressed(new ShooterOn());
-    rightForward.whenReleased(new ShooterOff());
+    rightSwitch.whenPressed(new ShooterOn());
+    rightSwitch.whenReleased(new ShooterOff());
+
+    shoot.whenPressed(new ShootCommand());
   }
 
   public double getRightAxis() {
